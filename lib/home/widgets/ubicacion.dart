@@ -6,9 +6,11 @@ class UbicacionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size; 
     return Container(
       margin: EdgeInsets.symmetric(horizontal:20.0,vertical: 5.0),
-      height: 30.0,width: double.infinity,
+      height: size.height*0.05,
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         color:Colors.grey.withOpacity(0.35)

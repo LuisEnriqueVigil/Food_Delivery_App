@@ -16,8 +16,11 @@ class _CategoriasState extends State<Categorias> {
   int select = 0; 
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size; 
+
     return Container(
-      height: 160,
+      height: size.height*0.23,
       child: ListView.builder(
         itemCount: categorias.length,
         padding: EdgeInsets.only(left:20.0,bottom: 5.0),
@@ -31,6 +34,7 @@ class _CategoriasState extends State<Categorias> {
             });
           },
           child: _tarjeta(
+            context,
             categorias[index].urlImage,
             categorias[index].nombre,
             index
@@ -40,12 +44,15 @@ class _CategoriasState extends State<Categorias> {
     );
   }
 
-  Widget _tarjeta(String rutaImagen,String titulo,int tag) {
+  Widget _tarjeta(BuildContext context,String rutaImagen,String titulo,int tag) {
+
+    final size = MediaQuery.of(context).size; 
+
     return AnimatedContainer(
             duration: Duration(milliseconds: 500),
             margin: EdgeInsets.only(right: 8.0),
-            height: 150.0,
-            width: 90.0,
+            height: size.height*0.25,
+            width: size.width*0.26,
             decoration: BoxDecoration(
               color:(select == tag )? Color(0xffFF9900) : Colors.white, 
               borderRadius: BorderRadius.circular(90.0),
@@ -61,7 +68,7 @@ class _CategoriasState extends State<Categorias> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
 
-                SizedBox(height: 10.0),
+                SizedBox(height: size.height*0.018),
 
                 CircleAvatar(
                   backgroundColor: Colors.white,
@@ -75,7 +82,7 @@ class _CategoriasState extends State<Categorias> {
                   ),
                 ),
 
-                SizedBox(height: 10.0),
+                SizedBox(height: size.height*0.018),
                 
                 Text(titulo,
                 style: GoogleFonts.poppins(

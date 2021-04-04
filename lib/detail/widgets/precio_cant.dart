@@ -17,12 +17,13 @@ class _PrecioCantidadState extends State<PrecioCantidad> {
     return Column(
       children: <Widget>[
         buildNombrePrecio(),
-        buildCantidadContador()
+        buildCantidadContador(context)
       ],
     );
   }
 
-  Widget buildCantidadContador() {
+  Widget buildCantidadContador(BuildContext context) {
+    final size = MediaQuery.of(context).size; 
     return Container(
         margin: EdgeInsets.only(left:20.0,top:12.0),
         child: Row(
@@ -34,7 +35,7 @@ class _PrecioCantidadState extends State<PrecioCantidad> {
             )
             ),
 
-            SizedBox(width: 20.0,),
+            SizedBox(width: size.width*0.10,),
 
             IconButton(
               icon: Icon(Icons.remove), 
@@ -48,14 +49,14 @@ class _PrecioCantidadState extends State<PrecioCantidad> {
               }
             ),
 
-            SizedBox(width: 50.0,),
+            SizedBox(width: size.width*0.12,),
 
             Text(cantidadInicial.toString(), 
             style:GoogleFonts.poppins(
               color: Colors.black,fontSize:18, fontWeight: FontWeight.w500
             )), 
-
-            SizedBox(width: 50.0,),
+            
+            SizedBox(width: size.width*0.12,),
 
             IconButton(
               icon: Icon(Icons.add), 

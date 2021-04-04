@@ -1,23 +1,27 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BuscadorWiget extends StatelessWidget {
   const BuscadorWiget({Key key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        _queBuscas(),
-        _icon()
+        _queBuscas(context),
+        _icon(context)
       ],
     ); 
   }
 
-  Widget _queBuscas() {
+  Widget _queBuscas(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
-        height: 40.0,
-        width: 280.0,
+        height: size.height*0.065,
+        width: size.width*0.75,
         padding: EdgeInsets.all(8.0),
         margin: EdgeInsets.only(left:20.0,right: 10.0),
         decoration: BoxDecoration(
@@ -45,9 +49,11 @@ class BuscadorWiget extends StatelessWidget {
       );
   }
 
-  Widget _icon () { 
+  Widget _icon (BuildContext context) {
+    final size = MediaQuery.of(context).size;  
     return Container(
-      height: 40.0,width: 40.0,
+      height: size.height*0.065,
+      width: size.width*0.13,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.35),
         borderRadius: BorderRadius.circular(15.0)

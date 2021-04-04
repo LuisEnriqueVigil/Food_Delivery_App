@@ -15,10 +15,10 @@ class MasPopulares extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
             children: <Widget>[
-              _tarjetaPopular('Pizza Napolitana','https://assets.stickpng.com/images/580b57fcd9996e24bc43c1e0.png',context),
-              _tarjetaPopular('Sushi Ninja Roll','https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c1f9.png',context),
-              _tarjetaPopular('Hamburguesa','https://www.puertopixel.com/wp-content/uploads/2016/12/imagen-de-hamburguesa-png.png',context),
-              _tarjetaPopular('Limonadas','https://www.pngkit.com/png/full/446-4464891_bebidas-png.png',context),
+              _tarjetaPopular('Pizza Napolitana','https://assets.stickpng.com/images/580b57fcd9996e24bc43c1e0.png',context,'Pizzas'),
+              _tarjetaPopular('Sushi Ninja Roll','https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c1f9.png',context,'Sushis'),
+              _tarjetaPopular('Hamburguesa','https://www.puertopixel.com/wp-content/uploads/2016/12/imagen-de-hamburguesa-png.png',context,'Sandiwch'),
+              _tarjetaPopular('Limonadas','https://www.pngkit.com/png/full/446-4464891_bebidas-png.png',context,'Bebidas'),
           ],
       
       ),
@@ -26,14 +26,16 @@ class MasPopulares extends StatelessWidget {
     );
 }
 
-  Widget _tarjetaPopular(String titulo, String rutaIamgen,BuildContext context) { 
+  Widget _tarjetaPopular(String titulo, String rutaIamgen,BuildContext context,String subtitle) { 
+    final size = MediaQuery.of(context).size; 
+
     return GestureDetector(
       onTap: (){ 
         Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailPage()));
       },
       child: Container(
               margin: EdgeInsets.only(bottom: 8.0),
-              height: 100.0,
+              height: size.height*0.15,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
                 color:Colors.grey.withOpacity(0.20),
@@ -42,13 +44,13 @@ class MasPopulares extends StatelessWidget {
               child:Row(
                 children: <Widget>[
                   Container(
-                    height: 75.0,
-                    width: 120.0,
+                    height: size.height*0.11,
+                    width: size.width*0.33,
                     child: Image(
                       image: NetworkImage(rutaIamgen),
                     ),
                   ), 
-                  SizedBox(width: 8.0),
+                  SizedBox(width: size.width*0.018),
 
                   Container(
                     width: 128,
@@ -62,7 +64,7 @@ class MasPopulares extends StatelessWidget {
                             fontSize: 15.0,
                         ), 
                       ),
-                      Text('Pizza', 
+                      Text(subtitle, 
                         style:GoogleFonts.poppins(
                             fontWeight: FontWeight.bold,
                             fontSize: 15.0,

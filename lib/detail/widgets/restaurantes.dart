@@ -9,6 +9,7 @@ class Restaurantes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size; 
     return Expanded(
       child: Container(
         padding: EdgeInsets.only(left:20.0,right: 20.0,top:20.0),
@@ -27,7 +28,7 @@ class Restaurantes extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 15.0),
+              SizedBox(height: size.height*0.010),
 
               Expanded(
                 child: ListView.builder(
@@ -35,6 +36,7 @@ class Restaurantes extends StatelessWidget {
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index)=> 
                   buildTarjetaRestaurante(
+                    context: context,
                     urlImage: restaurantes[index].urlImage,
                     disp: restaurantes[index].disp,
                     precio1: restaurantes[index].precio1,
@@ -49,11 +51,12 @@ class Restaurantes extends StatelessWidget {
     );
   }
 
-  Widget buildTarjetaRestaurante({String urlImage,String nombre,bool disp,double precio1,double precio2}) {
+  Widget buildTarjetaRestaurante({BuildContext context,String urlImage,String nombre,bool disp,double precio1,double precio2}) {
+    final size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(bottom: 10.0),
       padding: EdgeInsets.symmetric(horizontal:20.0),
-      height: 120.0,
+      height: size.height*0.16,
       decoration: BoxDecoration(
         color:Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(20.0))
@@ -63,14 +66,14 @@ class Restaurantes extends StatelessWidget {
         children: <Widget>[
 
           Container(
-            height: 70.0,
-            width: 120.0,
+            height: size.height*0.12,
+            width: size.width*0.35,
             child: Image(
               image: NetworkImage(urlImage),
             ),
           ), 
 
-          SizedBox(width: 40.0),
+          SizedBox(width: size.width*0.08),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +93,7 @@ class Restaurantes extends StatelessWidget {
                   Text("\$"+precio1.toString(),
                   style: GoogleFonts.poppins(fontSize: 15.0,color: Colors.black,fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(width: 8.0),
+                  SizedBox(width: size.width*0.025),
                   Text("\$"+precio2.toString(),
                   style: GoogleFonts.poppins(fontSize: 15.0,color: Colors.grey,fontWeight: FontWeight.bold),
                   ),

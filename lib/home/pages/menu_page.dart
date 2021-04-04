@@ -8,6 +8,7 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size; 
     return Scaffold(
       backgroundColor: Color(0xffFF9900),
       body: Container(
@@ -16,7 +17,7 @@ class MenuPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ProfileInfo(),
-            SizedBox(height: 100.0),
+            SizedBox(height: size.height*0.15),
             _optionsColumn()
           ],
         ),

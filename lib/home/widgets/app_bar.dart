@@ -13,10 +13,11 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final isDrawerModel = Provider.of<DrawerModel>(context,listen: true);
-    
+    final size = MediaQuery.of(context).size; 
+
     return Container(
       width: double.infinity,
-      height: 60.0,
+      height: size.height*0.085,
       margin: EdgeInsets.symmetric(horizontal:10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
             }
             :
             (){
-              print(isDrawerModel.isDrawer);
+              // print(isDrawerModel.isDrawer);
               if(!isDrawerModel.isDrawer)
                 {
                   isDrawerModel.xoffset = 200; 
